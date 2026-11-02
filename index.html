@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HospitalBench 2027</title>
+<meta name="description" content="HospitalBench 2027: a proposed CVPR 2027 workshop and challenge on diagnosing long-horizon failure in embodied agents, on ten chained simulated hospital tasks.">
+<style>
+:root{--bg:#f6f7f5;--panel:#fff;--ink:#1b1f1d;--muted:#5d6661;--line:#d6dbd7;--accent:#1f6f5c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--panel:#1c211f;--ink:#e6ebe8;--muted:#9aa5a0;--line:#2f3633;--accent:#5fc3a6}}
+:root[data-theme="dark"]{--bg:#141816;--panel:#1c211f;--ink:#e6ebe8;--muted:#9aa5a0;--line:#2f3633;--accent:#5fc3a6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:28px 16px 56px}
+h1{font-size:30px;line-height:1.2;margin:0 0 6px}
+h2{font-size:20px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.sub{color:var(--muted);margin:0 0 18px}
+.badge{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border:1px solid var(--accent);color:var(--accent);border-radius:999px;margin-bottom:12px}
+figure{margin:18px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+video{width:100%;height:auto;border-radius:6px;background:#000;display:block}
+figcaption{color:var(--muted);font-size:14px;margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600}
+.tbl{overflow-x:auto}
+a{color:var(--accent)}
+footer{margin-top:36px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<span class="badge">Proposed CVPR 2027 workshop and challenge · under review (decisions 22 Dec 2026)</span>
+<h1>HospitalBench 2027</h1>
+<p class="sub">Diagnosing Long-Horizon Failure in Embodied Agents · Seattle, 20 or 21 June 2027</p>
+
+<p>Where, and why, does an embodied agent's performance degrade along a chain of dependent tasks? HospitalBench 2027 is a proposed workshop and challenge on ten simulated hospital tasks of chained sub-tasks, each link checked by moving the previous result. Beside end-task success, every entry gets a failure-mode profile read from its logged trajectories: compounding errors per link, recovery, state drift and tool-use breakdowns, with per-position curves and task-length scaling. Two tracks, foundation models and vision-language-action policies, are scored per sub-task and per link. Harm events are simulator proxies, not injuries.</p>
+
+<figure>
+<video src="scripted_robot_t3.mp4" poster="poster.jpg" controls muted playsinline preload="metadata"></video>
+<figcaption>The scripted reference robot on task T3 (night infusion alarm round), sub-tasks T3.01 to T3.05 in one continuous run with no reset, in Isaac Sim. The film is cut to under 30 s; each sub-task's start is shown at real speed and the rest sped up.</figcaption>
+</figure>
+
+<h2>The ten tasks</h2>
+<div class="tbl"><table>
+<thead><tr><th>Task</th><th>Hospital area</th></tr></thead>
+<tbody>
+<tr><td>T1 Instrument count before closure</td><td>Operating room</td></tr>
+<tr><td>T2 Sterile set into the OR before incision</td><td>Operating room</td></tr>
+<tr><td>T3 Night infusion alarm round</td><td>ICU bay</td></tr>
+<tr><td>T4 Code blue: crash trolley to the bed</td><td>Ward</td></tr>
+<tr><td>T5 Chemo vials from the drug cabinet</td><td>Pharmacy</td></tr>
+<tr><td>T6 Fridge failure: move insulin</td><td>Pharmacy</td></tr>
+<tr><td>T7 Sterile store restock by expiry</td><td>Supply store</td></tr>
+<tr><td>T8 STAT specimens to the lab cold room</td><td>Supply store, lifts</td></tr>
+<tr><td>T9 Biohazard bagging and sharps</td><td>Utility and waste</td></tr>
+<tr><td>T10 Night admission paperwork and bedside station</td><td>Nurse station</td></tr>
+</tbody></table></div>
+
+<h2>Planned dates</h2>
+<div class="tbl"><table>
+<thead><tr><th>Date (AoE)</th><th>Step</th></tr></thead>
+<tbody>
+<tr><td>22 Dec 2026</td><td>CVPR workshop decision</td></tr>
+<tr><td>January 2027</td><td>Full website, rules and call for extended abstracts</td></tr>
+<tr><td>1 Feb 2027</td><td>Challenge development phase opens</td></tr>
+<tr><td>1 Apr 2027</td><td>Test phase opens</td></tr>
+<tr><td>15 May 2027</td><td>Challenge submission deadline</td></tr>
+<tr><td>20 or 21 Jun 2027</td><td>Workshop at CVPR 2027, Seattle</td></tr>
+</tbody></table></div>
+
+<h2>Organizers</h2>
+<p>Gaytri Jena (UC Berkeley School of Information) · Kapil Wanaskar</p>
+<p>Contact: Gaytri Jena, gaytri_jena@berkeley.edu</p>
+
+<footer>All data are simulated; no real person, patient record or hospital is recorded. Dates are tentative until the workshop is accepted.</footer>
+</div>
+</body>
+</html>
