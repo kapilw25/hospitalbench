@@ -36,8 +36,8 @@ footer{margin-top:36px;color:var(--muted);font-size:13px}
 <p>Where, and why, does an embodied agent's performance degrade along a chain of dependent tasks? HospitalBench 2027 is a proposed workshop and challenge on ten simulated hospital tasks of chained sub-tasks, each link checked by moving the previous result. Beside end-task success, every entry gets a failure-mode profile read from its logged trajectories: compounding errors per link, recovery, state drift and tool-use breakdowns, with per-position curves and task-length scaling. Two tracks, foundation models and vision-language-action policies, are scored per sub-task and per link. Harm events are simulator proxies, not injuries.</p>
 
 <figure>
-<video src="scripted_robot_t3.mp4" poster="poster.jpg" controls muted playsinline preload="metadata"></video>
-<figcaption>The scripted reference robot on task T3 (night infusion alarm round), sub-tasks T3.01 to T3.05 in one continuous run with no reset, in Isaac Sim. The film is cut to under 30 s; each sub-task's start is shown at real speed and the rest sped up.</figcaption>
+<video src="t1_grid.mp4" poster="poster.jpg" controls muted playsinline preload="metadata"></video>
+<figcaption>Task T1 (instrument count before surgical closure), one start state, sub-tasks T1.01 to T1.05 in one continuous run with no reset. Top left: the scripted reference robot finishes all five. The other tiles: six frontier models at their top setting, each stopping at its first failed sub-task, with the failed check shown in red. The film is cut to under 30 s; sub-task starts and failures play at real speed.</figcaption>
 </figure>
 
 <h2>The ten tasks</h2>
