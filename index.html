@@ -3,89 +3,304 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HospitalBench 2027</title>
+<title>HospitalBench 2027 Workshop and Challenge @ CVPR 2027</title>
 <meta name="description" content="HospitalBench 2027: a proposed CVPR 2027 workshop and challenge on diagnosing long-horizon failure in embodied agents, on ten chained simulated hospital tasks.">
-<style>
-:root{--bg:#f6f7f5;--panel:#fff;--ink:#1b1f1d;--muted:#5d6661;--line:#d6dbd7;--accent:#1f6f5c}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--panel:#1c211f;--ink:#e6ebe8;--muted:#9aa5a0;--line:#2f3633;--accent:#5fc3a6}}
-:root[data-theme="dark"]{--bg:#141816;--panel:#1c211f;--ink:#e6ebe8;--muted:#9aa5a0;--line:#2f3633;--accent:#5fc3a6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
-.wrap{max-width:880px;margin:0 auto;padding:28px 16px 56px}
-h1{font-size:30px;line-height:1.2;margin:0 0 6px}
-h2{font-size:20px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:4px}
-.sub{color:var(--muted);margin:0 0 18px}
-.badge{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border:1px solid var(--accent);color:var(--accent);border-radius:999px;margin-bottom:12px}
-figure{margin:18px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
-video{width:100%;height:auto;border-radius:6px;background:#000;display:block}
-figcaption{color:var(--muted);font-size:14px;margin-top:8px}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-weight:600}
-.tbl{overflow-x:auto}
-a{color:var(--accent)}
-footer{margin-top:36px;color:var(--muted);font-size:13px}
-</style>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hospitalbench.css">
 </head>
 <body>
-<div class="wrap">
-<span class="badge">Proposed CVPR 2027 workshop and challenge · under review (decisions 22 Dec 2026)</span>
-<h1>HospitalBench 2027</h1>
-<p class="sub">Diagnosing Long-Horizon Failure in Embodied Agents · Seattle, 20 or 21 June 2027</p>
 
-<p>Where, and why, does an embodied agent's performance degrade along a chain of dependent tasks? HospitalBench 2027 is a proposed workshop and challenge on ten simulated hospital tasks of chained sub-tasks, each link checked by moving the previous result. Beside end-task success, every entry gets a failure-mode profile read from its logged trajectories: compounding errors per link, recovery, state drift and tool-use breakdowns, with per-position curves and task-length scaling. Two tracks, foundation models and vision-language-action policies, are scored per sub-task and per link. Harm events are simulator proxies, not injuries.</p>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <a class="navbar-brand" href="#top"><img src="logo.svg" alt="HospitalBench logo"><span class="hb">HospitalBench</span></a>
+    <div class="navbar-end">
+      <a class="navbar-item" href="#overview">Overview</a>
+      <a class="navbar-item" href="#tasks">Tasks</a>
+      <a class="navbar-item" href="#tracks">Tracks</a>
+      <a class="navbar-item" href="#evaluation">Evaluation</a>
+      <a class="navbar-item" href="#timeline">Timeline</a>
+      <a class="navbar-item" href="#awards">Awards</a>
+      <a class="navbar-item" href="#speakers">Speakers</a>
+      <a class="navbar-item" href="#organizers">Organizers</a>
+      <a class="navbar-item" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-<figure>
-<video src="t1_grid.mp4" poster="poster.jpg" controls muted playsinline preload="metadata"></video>
-<figcaption>Task T1 (instrument count before surgical closure), one start state, sub-tasks T1.01 to T1.05 in one continuous run with no reset. Top left: the scripted reference robot finishes all five. The other tiles: six frontier models at their top setting, each stopping at its first failed sub-task, with the failed check shown in red. The film is cut to under 30 s; sub-task starts and failures play at real speed. Earlier version (v0), filmed before the warm-up steps were added; a film of the frozen release will replace it.</figcaption>
-</figure>
+<section class="hero" id="top">
+  <div class="container">
+    <h1><img src="logo.svg" alt=""><span class="hb">HospitalBench</span> 2027</h1>
+    <p class="subtitle">Diagnosing Long-Horizon Failure in Embodied Agents</p>
+    <p class="venue"><strong>Proposed CVPR 2027 workshop and challenge</strong>, Seattle, 20 or 21 June 2027.</p>
+    <p class="lead">Under review: the workshop decision is due on 22 December 2026, so all dates on this page are tentative until the workshop is accepted. Half-day, in person, with remote invited talks.</p>
+    <div class="buttons">
+      <a class="button" href="#overview">Overview</a>
+      <a class="button" href="#tasks">The Ten Tasks</a>
+      <a class="button" href="#tracks">Tracks</a>
+      <a class="button" href="#timeline">Timeline</a>
+      <a class="button" href="#speakers">Speakers</a>
+      <a class="button" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.6 7H4v.4l8 5.6 8-5.6V7h-.6zM4 17h16V9.9l-8 5.6-8-5.6z"/></svg>Contact</a>
+    </div>
+  </div>
+</section>
 
-<h2>The ten tasks</h2>
-<div class="tbl"><table>
-<thead><tr><th>Task</th><th>Hospital area</th></tr></thead>
-<tbody>
-<tr><td>T1 Instrument count before closure</td><td>Operating room</td></tr>
-<tr><td>T2 Sterile set into the OR before incision</td><td>Operating room</td></tr>
-<tr><td>T3 Night infusion alarm round</td><td>ICU bay</td></tr>
-<tr><td>T4 Code blue: crash trolley to the bed</td><td>Ward</td></tr>
-<tr><td>T5 Chemo vials from the drug cabinet</td><td>Pharmacy</td></tr>
-<tr><td>T6 Fridge failure: move insulin</td><td>Pharmacy</td></tr>
-<tr><td>T7 Sterile store restock by expiry</td><td>Supply store</td></tr>
-<tr><td>T8 STAT specimens to the lab cold room</td><td>Supply store, lifts</td></tr>
-<tr><td>T9 Biohazard bagging and sharps</td><td>Utility and waste</td></tr>
-<tr><td>T10 Night admission paperwork and bedside station</td><td>Nurse station</td></tr>
-</tbody></table></div>
+<section class="section" id="overview">
+  <div class="container">
+    <h2>Overview</h2>
+    <div class="card">
+      <h4>The one question</h4>
+      <div class="content">
+        <p>Where, and why, does an embodied agent's performance degrade along a chain of dependent tasks? <strong>HospitalBench 2027</strong> is a workshop and challenge on ten simulated hospital tasks of chained sub-tasks, each link checked by moving the previous result.</p>
+        <p>Beside end-task success, every entry gets a failure-mode profile read from its logged trajectories: <strong>compounding errors</strong> per link, <strong>recovery</strong>, <strong>state drift</strong> (the pose a robot reports against its true pose) and <strong>tool-use breakdowns</strong>, with per-position curves and task-length scaling.</p>
+        <p>Two tracks, foundation models and vision-language-action (VLA) policies, are scored per sub-task and per link. Harm events are simulator proxies, not injuries.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>A chain, filmed</h4>
+      <figure>
+        <video src="t1_grid.mp4" poster="poster.jpg" controls muted playsinline preload="metadata"></video>
+        <figcaption>Task T1 (instrument count before surgical closure), one start state, sub-tasks T1.01 to T1.05 in one continuous run with no reset. Top left: the scripted reference robot finishes all five. The other tiles: six frontier models at their top setting, each stopping at its first failed sub-task, with the failed check shown in red. The film is cut to under 30 s; sub-task starts and failures play at real speed. Earlier version (v0), filmed before the warm-up steps were added; a film of the frozen release will replace it.</figcaption>
+      </figure>
+    </div>
+    <div class="card">
+      <h4>Format</h4>
+      <div class="content">
+        <ul>
+          <li><strong>Workshop:</strong> half-day, in person, with remote invited talks over the CVPR Zoom room.</li>
+          <li><strong>Challenge:</strong> one challenge on the ten tasks, with two tracks.</li>
+          <li><strong>Paper track:</strong> non-archival, reviewed extended abstracts of up to 4 pages, double-blind on OpenReview.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Planned dates</h2>
-<div class="tbl"><table>
-<thead><tr><th>Date (AoE)</th><th>Step</th></tr></thead>
-<tbody>
-<tr><td>22 Dec 2026</td><td>CVPR workshop decision</td></tr>
-<tr><td>January 2027</td><td>Full website, rules and call for extended abstracts</td></tr>
-<tr><td>1 Feb 2027</td><td>Challenge development phase opens</td></tr>
-<tr><td>1 Apr 2027</td><td>Test phase opens</td></tr>
-<tr><td>15 May 2027</td><td>Challenge submission deadline</td></tr>
-<tr><td>20 or 21 Jun 2027</td><td>Workshop at CVPR 2027, Seattle</td></tr>
-</tbody></table></div>
+<section class="section" id="tasks">
+  <div class="container">
+    <h2>The Ten Tasks</h2>
+    <p class="section-lead">Ten tasks of five scored dependent sub-tasks each (four links per task, 40 in all) across eight hospital areas. Each follows one hospital role, mirrors one real risk, and lists named harm events (51 in all) that fail the task.</p>
+    <div class="box">
+      <div class="table-wrap">
+      <table class="data-table stack">
+        <thead><tr><th>Task</th><th>Kind</th><th>Area and role</th><th>Risk mirrored</th></tr></thead>
+        <tbody>
+<tr><td data-label="Task"><strong>T1</strong> Instrument count before closure</td><td data-label="Kind"><span class="kind kind-L">L</span></td><td data-label="Area and role">Operating room; scrub nurse</td><td data-label="Risk mirrored">Retained surgical item</td></tr>
+<tr><td data-label="Task"><strong>T2</strong> Sterile set into the OR before incision</td><td data-label="Kind"><span class="kind kind-L">L</span></td><td data-label="Area and role">Operating room; circulating nurse</td><td data-label="Risk mirrored">Wrong, dirty or late set</td></tr>
+<tr><td data-label="Task"><strong>T3</strong> Night infusion alarm round</td><td data-label="Kind"><span class="kind kind-24">24/7</span></td><td data-label="Area and role">ICU bay; ICU nurse</td><td data-label="Risk mirrored">Line runs dry; wrong bag</td></tr>
+<tr><td data-label="Task"><strong>T4</strong> Code blue: crash trolley to the bed</td><td data-label="Kind"><span class="kind kind-L">L</span></td><td data-label="Area and role">Ward; ward nurse</td><td data-label="Risk mirrored">Late defibrillator or fluids</td></tr>
+<tr><td data-label="Task"><strong>T5</strong> Chemo vials from the drug cabinet</td><td data-label="Kind"><span class="kind kind-L">L</span></td><td data-label="Area and role">Pharmacy; technician</td><td data-label="Risk mirrored">Vial breaks; wrong vial</td></tr>
+<tr><td data-label="Task"><strong>T6</strong> Fridge failure: move insulin</td><td data-label="Kind"><span class="kind kind-24">24/7</span></td><td data-label="Area and role">Pharmacy; pharmacist</td><td data-label="Risk mirrored">Insulin mix-up; warm fridge</td></tr>
+<tr><td data-label="Task"><strong>T7</strong> Sterile store restock by expiry</td><td data-label="Kind"><span class="kind kind-W">W</span></td><td data-label="Area and role">Supply store; technician</td><td data-label="Risk mirrored">Expired stock used; stock-out</td></tr>
+<tr><td data-label="Task"><strong>T8</strong> STAT specimens to the lab cold room</td><td data-label="Kind"><span class="kind kind-L">L</span></td><td data-label="Area and role">Supply store, lifts; porter</td><td data-label="Risk mirrored">Specimen lost or warmed</td></tr>
+<tr><td data-label="Task"><strong>T9</strong> Biohazard bagging and sharps</td><td data-label="Kind"><span class="kind kind-W">W</span></td><td data-label="Area and role">Utility and waste; EVS tech.</td><td data-label="Risk mirrored">Loose sharp; waste</td></tr>
+<tr><td data-label="Task"><strong>T10</strong> Night admission paperwork and bedside station</td><td data-label="Kind"><span class="kind kind-24">24/7</span></td><td data-label="Area and role">Nurse station; ward clerk</td><td data-label="Risk mirrored">Patient misidentification</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="margin:12px 0 0">Kind: <span class="kind kind-L">L</span> life-threatening, <span class="kind kind-24">24/7</span> round-the-clock, <span class="kind kind-W">W</span> labor-intensive. OR: operating room. Sub-tasks are named T1.01 to T1.05; extension sub-tasks T<i>n</i>.06 to T<i>n</i>.10 are written and open once an entry passes all five.</p>
+    </div>
+    <div class="card">
+      <h4>Robot and simulator</h4>
+      <div class="content">
+        <p>A wheeled mobile manipulator (Ridgeback base, 7-DoF Franka arm, parallel gripper opening to 8 cm, head and wrist cameras) in NVIDIA Isaac Sim. Each task has its own floor plan, furnished with NVIDIA SimReady assets. Each sub-task instruction states its pass terms in numbers (position and heading bands, a hold time), checked from simulator state. Simulated staff and visitors cross the work area on schedules; the robot must keep clear.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Build status, 3 November 2026</h4>
+      <div class="content">
+        <ul>
+          <li>All ten rooms are built in Isaac Sim, with 2 public start states per task, and pass a physics settle check.</li>
+          <li>The scripted reference robot completes sub-tasks 1 to 5 as one chain on both start states for T1, T7, T9 and T10; on the other six tasks, early sub-tasks only.</li>
+          <li>One link of 40 is certified so far, T1.01&rarr;T1.02.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Organizers</h2>
-<ul>
-<li>Gaytri Jena<sup>*</sup>, Master's student, UC Berkeley School of Information · <a href="https://www.linkedin.com/in/gaytri-jena/">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=hDzYohIAAAAJ">Google Scholar</a></li>
-<li>Kapil W<sup>*</sup>, Senior Research Engineer, Canva · <a href="https://www.linkedin.com/in/kapil-w-06507483/">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=fDo5HioAAAAJ">Google Scholar</a></li>
+<section class="section" id="tracks">
+  <div class="container">
+    <h2>Tracks</h2>
+    <p class="section-lead">Ten tasks, two tracks, one scoring.</p>
+    <div class="card">
+      <h4>Track 1: foundation models through API calls</h4>
+      <div class="content">
+        <p>The agent receives each sub-task instruction and images from the head and wrist cameras. It acts through six calls:</p>
+        <ul>
+          <li>drive the base to a pose;</li>
+          <li>move the fingertip to a 6-DoF pose;</li>
+          <li>set the gripper opening;</li>
+          <li>turn the head camera;</li>
+          <li>wait;</li>
+          <li>end the sub-task.</li>
+        </ul>
+        <p>The world is paused between calls; each sub-task has a cap on calls, published on the task cards before 1 February 2027. Prompting, memory and the tool loop are free, but every robot call must be chosen by the model: no hand-written controllers or stored poses for the ten tasks. Entrants submit a container that the organizers run with network access only to the model APIs declared at registration. The organizers run every Track 1 episode on their own GPU; entrants pay their own API use.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Track 2: trained VLA policies</h4>
+      <div class="content">
+        <p>The policy receives the instruction, camera images and robot state, and outputs, at 10 Hz, base velocity (vx, vy, yaw rate), 7 arm joint position targets and the gripper width. Entrants submit a container with checkpoint and inference code, with no external API calls; every container runs on one organizer-provided NVIDIA GPU with at least 48 GB. Any training data may be used except test and reserve start states.</p>
+        <p>The demonstration set holds 100 scripted-robot demonstrations per task on development start states (images, robot state, actions, instructions), recorded by 1 February 2027. Track 2 has no trained baseline yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="evaluation">
+  <div class="container">
+    <h2>Splits and Evaluation</h2>
+    <h3 style="text-align:center">Splits</h3>
+    <div class="split-card">
+      <div class="split-icon">D</div>
+      <div class="split-content"><strong>Development</strong>
+        <p>All ten tasks with start states, scenes, task cards, scorer, link certificates, the Track 1 baseline agent and the Track 2 demonstrations. 5 start states per task planned, 2 built.</p></div>
+      <span class="badge badge-public">Public</span>
+    </div>
+    <div class="split-card">
+      <div class="split-icon">T</div>
+      <div class="split-content"><strong>Test</strong>
+        <p>10 start states per task: new object poses, people schedules and option layouts, scored by the organizers on a public leaderboard.</p></div>
+      <span class="badge badge-coming">Hidden</span>
+    </div>
+    <div class="split-card">
+      <div class="split-icon">R</div>
+      <div class="split-content"><strong>Reserve</strong>
+        <p>5 start states per task, run once on each final submission. Scores are never published and only detect overfitting to the test split.</p></div>
+      <span class="badge badge-never">Never revealed</span>
+    </div>
+
+    <h3 style="text-align:center;margin-top:40px">How an entry is scored</h3>
+    <div class="card">
+      <h4>Episodes</h4>
+      <div class="content">
+        <p>Every test start state is run as a chained episode, the five scored sub-tasks in order, ending at the first failure. It is run twice: clean, and with one organizer-applied displacement inside the band of a position or heading link; entrants know such displacements happen, but not where.</p>
+        <p><strong>Link-alone episodes:</strong> for each link k&rarr;k+1, every test state also starts from the scripted reference robot's end state of sub-task k, displaced the same way, so every link cell has at least 5 displaced episodes whatever the entry did earlier. They are reported apart from the chained runs.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Metrics</h4>
+      <ul class="rules-list">
+<li><svg class="rule-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 16.6 4.9 12.3l-1.4 1.4 5.7 5.7L20.5 7.1l-1.4-1.4z"/></svg><span><strong>Per sub-task:</strong> the share of clean episodes that pass sub-task k among those that passed sub-tasks 1 to k&minus;1.</span></li>
+<li><svg class="rule-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 16.6 4.9 12.3l-1.4 1.4 5.7 5.7L20.5 7.1l-1.4-1.4z"/></svg><span><strong>Per link:</strong> the pass rate of k+1 in chained displaced episodes and in link-alone episodes, beside its clean rate; the gap shows whether the entry acts on the actual or the intended result of k. Counts accompany every rate.</span></li>
+<li><svg class="rule-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 16.6 4.9 12.3l-1.4 1.4 5.7 5.7L20.5 7.1l-1.4-1.4z"/></svg><span><strong>End-task success:</strong> the share of episodes that pass all five scored sub-tasks, one reported number beside the per-step scores.</span></li>
+<li><svg class="rule-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 16.6 4.9 12.3l-1.4 1.4 5.7 5.7L20.5 7.1l-1.4-1.4z"/></svg><span><strong>Failure-mode profile</strong> (per entry, beside the ranking score, never merged into it): compounding, recovery, state drift, tool-use breakdowns (Track 1), and the share of episodes passing the first k sub-tasks, with task-length scaling. A cell with fewer than five episodes prints &ldquo;too few&rdquo;.</span></li>
+<li><svg class="rule-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 16.6 4.9 12.3l-1.4 1.4 5.7 5.7L20.5 7.1l-1.4-1.4z"/></svg><span><strong>Harm events:</strong> shown beside every chain score, zeros included; each fails its task, and none is an injury.</span></li>
 </ul>
-<p>Contact: Gaytri Jena, gaytri_jena@berkeley.edu</p>
-<p class="sub"><sup>*</sup>The authors contributed to this work independently of their roles and employment</p>
+    </div>
+    <div class="card">
+      <h4>Ranking score</h4>
+      <div class="content">
+        <p>The ranking score is the mean number of sub-tasks passed in order, divided by five, over all test episodes of all tasks. End-task success and the ranking score come from chained runs only. No baseline is above zero end-task success today (0 of 35 pilot runs), so at this floor the ranking score ties at or near 0. Scores that agree to two decimals are ranked by the number of episodes passing each sub-task, deepest position first, then the unrounded mean, then lower mean cost per run (Track 1 API dollars). The leaderboard also shows per-area and per-kind breakdowns.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Every link is certified before release</h4>
+      <div class="content">
+        <p>For each link from sub-task k to k+1, the organizers' scripted reference robot completes sub-tasks 1 to k on a development start state, then k's result is moved inside its own pass band in every planar direction, at two sizes fixed in advance, with a simulated person far from the work area and crossing it. The link is accepted only if a blind replay of the reference plan fails in every displaced run and an adaptive reference passes in every one. For T1.01&rarr;T1.02 the adaptive reference passed 32 of 32 displaced runs and the blind replay 0 of 32. Certificates are published with the task cards.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Preventing cheating</h4>
+      <div class="content">
+        <p>Test and reserve start states never leave the organizers' servers. Each team has at most five scored test submissions and one final submission, also run on the reserve split. Award-eligible teams provide code and checkpoints, which the organizers rerun and review. An entry that cannot be reproduced, breaks a rule, or scores lower on reserve than on test by more than a published threshold is re-ranked. Organizers' groups may submit but win no awards.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Invited speakers</h2>
-<ul>
-<li>Aman Chadha, Senior Staff Tech Lead, Google DeepMind · <a href="https://www.linkedin.com/in/amanc/">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=gPGQuBQAAAAJ">Google Scholar</a></li>
-<li>Vasu Sharma, Head of Artificial Intelligence, Pocket FM · <a href="https://www.linkedin.com/in/vasu-sharma55/">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=PLUB4dIAAAAJ">Google Scholar</a></li>
-<li>Vinija Jain, Research Engineer, Google DeepMind · <a href="https://www.linkedin.com/in/vinija/">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=oYaD1NcAAAAJ">Google Scholar</a></li>
-<li>Amitava Das, Professor, APPCAIR, BITS Pilani (Goa) · <a href="https://www.linkedin.com/in/amitava-das-78348022/">LinkedIn</a> · <a href="https://scholar.google.com/citations?user=HYpfhaEAAAAJ">Google Scholar</a></li>
-</ul>
-<p class="sub">Speakers are invited; their confirmation is tentative until the workshop is accepted.</p>
+<section class="section" id="timeline">
+  <div class="container">
+    <h2>Timeline</h2>
+    <p class="section-lead">All dates use AoE (Anywhere on Earth) and are tentative until the workshop is accepted.</p>
+    <div class="timeline-item"><div class="timeline-label">Workshop decision</div><div class="timeline-date">22 December 2026</div></div>
+    <div class="timeline-item"><div class="timeline-label">Website live</div><div class="timeline-date">January 2027</div><p>Rules, task cards and the call for abstracts.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Challenge start</div><div class="timeline-date">1 February 2027</div><p>Tasks, scorer, baseline and demonstrations; Track 2 go/no-go.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Test phase opens</div><div class="timeline-date">1 April 2027</div><p>Hidden test start states and a public leaderboard.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Submission deadline</div><div class="timeline-date">15 May 2027</div><p>Final containers, code and checkpoints.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Reserve-split runs and code check</div><div class="timeline-date">16 to 31 May 2027</div><p>Re-ranking where needed.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Decisions to participants</div><div class="timeline-date">4 June 2027</div><p>Winners are invited to present.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Workshop at CVPR 2027, Seattle</div><div class="timeline-date">20 or 21 June 2027</div><p>Results, winner talks, awards.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Paper track (extended abstracts)</div><div class="timeline-date">January to May 2027</div><p>Call for abstracts in January 2027; deadline 2 April (AoE); reviews 3 to 23 April; decisions 30 April; final versions 14 May.</p></div>
+  </div>
+</section>
 
-<footer>All data are simulated; no real person, patient record or hospital is recorded. Dates are tentative until the workshop is accepted.</footer>
-</div>
+<section class="section" id="awards">
+  <div class="container">
+    <h2>Awards &amp; Recognition</h2>
+    <div class="card">
+      <div class="content">
+        <p>There are <strong>no cash prizes</strong>. Top-performing teams are recognized with certificates and workshop talk slots:</p>
+        <ul>
+          <li><strong>Certificates:</strong> winners receive award certificates.</li>
+          <li><strong>Talk slots:</strong> the winner and runner-up of each track present in the workshop (10 minutes each).</li>
+          <li><strong>Eligibility:</strong> organizers' groups may submit but win no awards; award-eligible teams provide code and checkpoints for the pre-award check.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="speakers">
+  <div class="container">
+    <h2>Invited Speakers</h2>
+    <p class="section-lead">All four speakers are confirmed (virtual): they give their talks remotely over the CVPR Zoom room, and they form the panel. No clinician is on the panel.</p>
+    <div class="people-grid">
+<article class="person"><h3>Aman Chadha</h3><p class="role">Senior Staff Tech Lead, Google DeepMind</p><p class="note">Foundation models as agents; evaluation</p><div class="links"><a class="button" href="https://www.linkedin.com/in/amanc/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=gPGQuBQAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+<article class="person"><h3>Vasu Sharma</h3><p class="role">Head of Artificial Intelligence, Pocket FM</p><p class="note">Multimodal AI built and run in industry</p><div class="links"><a class="button" href="https://www.linkedin.com/in/vasu-sharma55/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=PLUB4dIAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+<article class="person"><h3>Vinija Jain</h3><p class="role">Research Engineer, Google DeepMind</p><p class="note">Foundation models; how model failures are measured</p><div class="links"><a class="button" href="https://www.linkedin.com/in/vinija/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=oYaD1NcAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+<article class="person"><h3>Amitava Das</h3><p class="role">Professor, APPCAIR, BITS Pilani (Goa)</p><p class="note">Safety and reliability of AI systems</p><div class="links"><a class="button" href="https://www.linkedin.com/in/amitava-das-78348022/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=HYpfhaEAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="organizers">
+  <div class="container">
+    <h2>Organizers</h2>
+    <div class="people-grid">
+<article class="person"><h3>Gaytri Jena<sup>&lowast;</sup></h3><p class="role">Master's student, UC Berkeley School of Information</p><div class="links"><a class="button" href="https://www.linkedin.com/in/gaytri-jena/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=hDzYohIAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+<article class="person"><h3>Kapil Wanaskar<sup>&lowast;</sup></h3><p class="role">Senior Research Engineer, Canva</p><div class="links"><a class="button" href="https://www.linkedin.com/in/kapil-w-06507483/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=fDo5HioAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+    </div>
+    <p class="footnote"><sup>&lowast;</sup>The organizers contributed to this work independently of their roles and employment</p>
+  </div>
+</section>
+
+<section class="section" id="ethics">
+  <div class="container">
+    <h2>Ethics and Licenses</h2>
+    <div class="card">
+      <div class="content">
+        <p>A high score in a simulated hospital is not evidence that a robot is safe near patients; real deployment needs clinical validation and regulatory review. No task touches a patient, and harm events are proxy tests on simulator state, not injuries.</p>
+        <p>All data are simulated: no real person, patient record or hospital is recorded, and names and record numbers on labels are invented. SimReady assets are CC BY 4.0 and our release credits NVIDIA. Tasks, scenes and demonstrations are released under CC BY 4.0, the scorer and code under the MIT license.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Workshop contact</h3>
+        <p>Questions about the workshop, the challenge or the paper track go to the organizers' group address.</p>
+        <div class="contact-actions">
+          <a class="button" href="mailto:hospitalbench-cvpr27@googlegroups.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.6 7H4v.4l8 5.6 8-5.6V7h-.6zM4 17h16V9.9l-8 5.6-8-5.6z"/></svg>hospitalbench-cvpr27@googlegroups.com</a>
+        </div>
+      </div>
+    </div>
+    <p class="center"><a class="nav-link" href="#top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 4 12l1.4 1.4L11 7.8V20h2V7.8l5.6 5.6L20 12z"/></svg>Back to top</a></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>All data are simulated; no real person, patient record or hospital is recorded. Dates are tentative until the workshop is accepted.</p>
+  <p>This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+</footer>
+
 </body>
 </html>
