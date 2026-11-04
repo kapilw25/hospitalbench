@@ -124,7 +124,7 @@
 <section class="section" id="tracks">
   <div class="container">
     <h2>Tracks</h2>
-    <p class="section-lead">Ten tasks, two tracks, one scoring.</p>
+    <p class="section-lead">Ten tasks, two tracks, one scoring. Every entry, trained or foundation model, is called through an API by the same harness, so participant scores sit on one leaderboard beside OpenAI, Anthropic Claude and Google Gemini models evaluated the same way.</p>
     <div class="card">
       <h4>Track 1: foundation models through API calls</h4>
       <div class="content">
@@ -137,13 +137,13 @@
           <li>wait;</li>
           <li>end the sub-task.</li>
         </ul>
-        <p>The world is paused between calls; each sub-task has a cap on calls, published on the task cards before 1 February 2027. Prompting, memory and the tool loop are free, but every robot call must be chosen by the model: no hand-written controllers or stored poses for the ten tasks. Entrants submit a container that the organizers run with network access only to the model APIs declared at registration. The organizers run every Track 1 episode on their own GPU; entrants pay their own API use.</p>
+        <p>The world is paused between calls; each sub-task has a cap on calls, published on the task cards before 1 February 2027. Prompting, memory and the tool loop are free, but every robot call must be chosen by the model: no hand-written controllers or stored poses for the ten tasks. A Track 1 team submits its agent plus an API key for a hosted foundation model. Evaluation runs on EvalAI remote evaluation with the organizers' GPU as the worker, which runs the simulator only; scores post automatically to the leaderboard. A team may optionally duplicate the public Hugging Face Space (Isaac Sim, harness and scorer) to a paid GPU of its own to develop on the public start states. Entrants pay their own API use.</p>
       </div>
     </div>
     <div class="card">
       <h4>Track 2: trained VLA policies</h4>
       <div class="content">
-        <p>The policy receives the instruction, camera images and robot state, and outputs, at 10 Hz, base velocity (vx, vy, yaw rate), 7 arm joint position targets and the gripper width. Entrants submit a container with checkpoint and inference code, with no external API calls; every container runs on one organizer-provided NVIDIA GPU with at least 48 GB. Any training data may be used except test and reserve start states.</p>
+        <p>The policy receives the instruction, camera images and robot state, and outputs, at 10 Hz, base velocity (vx, vy, yaw rate), 7 arm joint position targets and the gripper width. Entrants host their trained policy behind an API endpoint (for example a Hugging Face Inference Endpoint or any provider). Our harness calls it once per control step and gets the action back. The world pauses between calls, so network latency does not change scores; the same call cap per sub-task applies. The organizers' worker runs the simulator only, with no inference GPU, and entrants pay their own endpoint costs. Any training data may be used except test and reserve start states.</p>
         <p>The demonstration set holds 100 scripted-robot demonstrations per task on development start states (images, robot state, actions, instructions), recorded by 1 February 2027. Track 2 has no trained baseline yet.</p>
       </div>
     </div>
@@ -194,7 +194,7 @@
     <div class="card">
       <h4>Ranking score</h4>
       <div class="content">
-        <p>The ranking score is the mean number of sub-tasks passed in order, divided by five, over all test episodes of all tasks. End-task success and the ranking score come from chained runs only. No baseline is above zero end-task success today (0 of 35 pilot runs), so at this floor the ranking score ties at or near 0. Scores that agree to two decimals are ranked by the number of episodes passing each sub-task, deepest position first, then the unrounded mean, then lower mean cost per run (Track 1 API dollars). The leaderboard also shows per-area and per-kind breakdowns.</p>
+        <p>The ranking score is the mean number of sub-tasks passed in order, divided by five, over the clean test episodes of all tasks. End-task success and the ranking score come from chained runs only. No baseline is above zero end-task success today (0 of 35 pilot runs), so at this floor the ranking score ties at or near 0. Scores that agree to two decimals are ranked by the number of episodes passing each sub-task, deepest position first, then the unrounded mean, then lower mean cost per run (Track 1 API dollars) or, for Track 2, fewer model calls per episode. The leaderboard also shows per-area and per-kind breakdowns.</p>
       </div>
     </div>
     <div class="card">
@@ -206,7 +206,7 @@
     <div class="card">
       <h4>Preventing cheating</h4>
       <div class="content">
-        <p>Test and reserve start states never leave the organizers' servers. Each team has at most five scored test submissions and one final submission, also run on the reserve split. Award-eligible teams provide code and checkpoints, which the organizers rerun and review. An entry that cannot be reproduced, breaks a rule, or scores lower on reserve than on test by more than a published threshold is re-ranked. Organizers' groups may submit but win no awards.</p>
+        <p>Test and reserve start states are never released as files; entrants' models see them only as camera images during organizer-run episodes (Track 1 through the entrant's own API account, Track 2 at its endpoint). Each team has one scored test submission and one final submission, also run on the reserve split. The never-revealed reserve split, the final rerun and a code check on request guard the final ranking; for a code check of a hosted model, the team shares weights and inference code with the organizers privately on request. An entry that cannot be reproduced, breaks a rule, or scores lower on reserve than on test by more than a published threshold is re-ranked. Organizers' groups may submit but win no awards.</p>
       </div>
     </div>
   </div>
@@ -220,7 +220,7 @@
     <div class="timeline-item"><div class="timeline-label">Website live</div><div class="timeline-date">January 2027</div><p>Rules, task cards and the call for abstracts.</p></div>
     <div class="timeline-item"><div class="timeline-label">Challenge start</div><div class="timeline-date">1 February 2027</div><p>Tasks, scorer, baseline and demonstrations; Track 2 go/no-go.</p></div>
     <div class="timeline-item"><div class="timeline-label">Test phase opens</div><div class="timeline-date">1 April 2027</div><p>Hidden test start states and a public leaderboard.</p></div>
-    <div class="timeline-item"><div class="timeline-label">Submission deadline</div><div class="timeline-date">15 May 2027</div><p>Final containers, code and checkpoints.</p></div>
+    <div class="timeline-item"><div class="timeline-label">Submission deadline</div><div class="timeline-date">15 May 2027</div><p>Final agents or endpoints.</p></div>
     <div class="timeline-item"><div class="timeline-label">Reserve-split runs and code check</div><div class="timeline-date">16 to 31 May 2027</div><p>Re-ranking where needed.</p></div>
     <div class="timeline-item"><div class="timeline-label">Decisions to participants</div><div class="timeline-date">4 June 2027</div><p>Winners are invited to present.</p></div>
     <div class="timeline-item"><div class="timeline-label">Workshop at CVPR 2027, Seattle</div><div class="timeline-date">20 or 21 June 2027</div><p>Results, winner talks, awards.</p></div>
@@ -237,7 +237,7 @@
         <ul>
           <li><strong>Certificates:</strong> winners receive award certificates.</li>
           <li><strong>Talk slots:</strong> the winner and runner-up of each track present in the workshop (10 minutes each).</li>
-          <li><strong>Eligibility:</strong> organizers' groups may submit but win no awards; award-eligible teams provide code and checkpoints for the pre-award check.</li>
+          <li><strong>Eligibility:</strong> organizers' groups may submit but win no awards; award-eligible teams share weights and inference code with the organizers privately on request for the pre-award check.</li>
         </ul>
       </div>
     </div>
