@@ -35,6 +35,7 @@
       <a class="navbar-item" href="#results">First results</a>
       <a class="navbar-item" href="#films">Films</a>
       <a class="navbar-item" href="#credits">Credits needed</a>
+      <a class="navbar-item" href="#organizers">Organizers</a>
       <a class="navbar-item" href="#contact">Contact</a>
       <a class="navbar-item" href="index.html">Workshop page</a>
     </div>
@@ -47,6 +48,17 @@
     <p class="subtitle">Frontier models start hospital chores well, then lose the thread.</p>
     <p class="lead">HospitalBench puts a mobile robot arm in simulated hospital rooms and asks a model to finish real chores, where each step sets up the next. We are asking AI labs for compute and API credits to run it on every frontier model. We are not asking for money.</p>
     <div class="chips"><span class="chip">GPU credits</span><span class="chip">Claude API credits</span><span class="chip">OpenAI API credits</span><span class="chip">Gemini API credits</span></div>
+  </div>
+</section>
+
+<section class="section" id="film" style="padding-top:32px">
+  <div class="container">
+    <div class="card">
+      <figure>
+        <video src="t1_grid.mp4" poster="poster.jpg" controls muted playsinline preload="metadata"></video>
+        <figcaption>Task T1 (instrument count before surgical closure), one start state, sub-tasks T1.01 to T1.05 in one continuous run with no reset. Top left: the scripted reference robot finishes all five. The other tiles: six frontier models at their top setting, each stopping at its first failed sub-task, with the failed check shown in red. The film is cut to under 30 s; sub-task starts and failures play at real speed. Earlier version (v0), filmed before the warm-up steps were added; a film of the frozen release will replace it.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -67,7 +79,7 @@
 <section class="section" id="results" style="background:#fafafa">
   <div class="container">
     <h2>First results: chore 1, 12 model settings</h2>
-    <p class="section-lead">Each model ran the whole chain once from each start state, 24 runs in all. None finished the chore. The best run passed 2 of its 5 sub-tasks.</p>
+    <p class="section-lead">Each model ran the whole chain once from each start state, 24 runs in all. None finished the chore. The best run passed 2 of its 5 sub-tasks. The film above shows start A only; the table below takes the better of the two starts.</p>
     <div class="table-wrap">
       <table class="data-table">
         <thead><tr><th>Model setting</th><th>Start A</th><th>Start B</th><th>Most sub-tasks passed</th></tr></thead>
@@ -93,7 +105,7 @@
 
 <section class="section" id="films">
   <div class="container">
-    <h2>Three chains, filmed</h2>
+    <h2>Three more chains, filmed</h2>
     <p class="section-lead">Top left in each film: the scripted robot completing all five sub-tasks in one continuous run. The other tiles show model runs and the sub-task where each one stopped; the last tile keeps score. Played at 45x.</p>
     <div class="films">
       <div class="card">
@@ -145,6 +157,17 @@
         <li>Credit for your support in the release.</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<section class="section" id="organizers">
+  <div class="container">
+    <h2>Organizers</h2>
+    <div class="people-grid">
+<article class="person"><h3>Gaytri Jena<sup>&lowast;</sup></h3><p class="role">Master's student, UC Berkeley School of Information</p><div class="links"><a class="button" href="https://www.linkedin.com/in/gaytri-jena/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=hDzYohIAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+<article class="person"><h3>Kapil Wanaskar<sup>&lowast;</sup></h3><p class="role">Senior Research Engineer, Canva</p><div class="links"><a class="button" href="https://www.linkedin.com/in/kapil-w-06507483/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="button" href="https://scholar.google.com/citations?user=fDo5HioAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></article>
+    </div>
+    <p class="footnote"><sup>&lowast;</sup>The organizers contributed to this work independently of their roles and employment</p>
   </div>
 </section>
 
