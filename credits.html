@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HospitalBench Credit Request</title>
+<meta name="description" content="HospitalBench asks AI labs for GPU and API credits, not money, to run its ten chained hospital chores on every frontier model.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hospitalbench.css">
+<style>
+/* page-only additions, in the workshop page's palette */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.chip{padding:4px 14px;border-radius:999px;background:#eef2eb;color:#5e7154;font-size:14.4px;font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px}
+.fact{padding:16px;border-top:3px solid #5e7154;background:#fafbfa;border-radius:0 0 6px 6px}
+.fact b{display:block;font-size:28px;line-height:1.2;color:#363636}
+.fact span{font-size:14.4px;color:#666}
+.steps{display:inline-flex;gap:3px;vertical-align:middle}
+.steps i{width:14px;height:14px;border-radius:3px;background:#f7e6e3;border:1px solid #b03a2e}
+.steps i.p{background:#5e7154;border-color:#5e7154}
+.data-table td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.films{display:grid;gap:16px}
+</style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="logo.svg" alt="HospitalBench logo"><span class="hb">HospitalBench</span></a>
+    <div class="navbar-end">
+      <a class="navbar-item" href="#benchmark">Benchmark</a>
+      <a class="navbar-item" href="#results">First results</a>
+      <a class="navbar-item" href="#films">Films</a>
+      <a class="navbar-item" href="#credits">Credits needed</a>
+      <a class="navbar-item" href="#contact">Contact</a>
+      <a class="navbar-item" href="index.html">Workshop page</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="container">
+    <h1><img src="logo.svg" alt=""><span class="hb">HospitalBench</span></h1>
+    <p class="subtitle">Frontier models start hospital chores well, then lose the thread.</p>
+    <p class="lead">HospitalBench puts a mobile robot arm in simulated hospital rooms and asks a model to finish real chores, where each step sets up the next. We are asking AI labs for compute and API credits to run it on every frontier model. We are not asking for money.</p>
+    <div class="chips"><span class="chip">GPU credits</span><span class="chip">Claude API credits</span><span class="chip">OpenAI API credits</span><span class="chip">Gemini API credits</span></div>
+  </div>
+</section>
+
+<section class="section" id="benchmark">
+  <div class="container">
+    <h2>What the benchmark is</h2>
+    <div class="facts">
+      <div class="fact"><b>10</b><span>hospital chores, from answering a phone to filing a patient's chart</span></div>
+      <div class="fact"><b>5+</b><span>chained sub-tasks per chore; each leaves the room the way the next one needs it</span></div>
+      <div class="fact"><b>2</b><span>start states per chore, so a memorised path does not carry over</span></div>
+    </div>
+    <div class="card content">
+      <p>Every chore is built in NVIDIA Isaac Sim with physics, cameras and people walking through the room. A scripted robot completes every chain, so each chore can be done. Before a chained run counts, each model must also pass every sub-task on its own. A failure inside the chain then points at the long-horizon part, not at a step the model cannot do.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results" style="background:#fafafa">
+  <div class="container">
+    <h2>First results: chore 1, 12 model settings</h2>
+    <p class="section-lead">Each model ran the whole chain once from each start state, 24 runs in all. None finished the chore. The best run passed 2 of its 5 sub-tasks.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Model setting</th><th>Start A</th><th>Start B</th><th>Most sub-tasks passed</th></tr></thead>
+        <tbody>
+          <tr><td>Claude Opus 5.5 · max</td><td><span class="steps"><i class="p"></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i class="p"></i><i class="p"></i><i></i><i></i><i></i></span></td><td class="num">2 of 5</td></tr>
+          <tr><td>Claude Opus 5.5 · high</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i class="p"></i><i></i><i></i><i></i><i></i></span></td><td class="num">1 of 5</td></tr>
+          <tr><td>Claude Fable 5.1 · max</td><td><span class="steps"><i class="p"></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">1 of 5</td></tr>
+          <tr><td>Claude Fable 5.1 · high</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">0 of 5</td></tr>
+          <tr><td>GPT-6.1 Terra · max</td><td><span class="steps"><i class="p"></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">1 of 5</td></tr>
+          <tr><td>GPT-6.1 Terra · high</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">0 of 5</td></tr>
+          <tr><td>GPT-6.1 Sol · max</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">0 of 5</td></tr>
+          <tr><td>GPT-6.1 Sol · high</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">0 of 5</td></tr>
+          <tr><td>GPT-6 Astra · max</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">0 of 5</td></tr>
+          <tr><td>GPT-6 Astra · high</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td class="num">0 of 5</td></tr>
+          <tr><td>Gemini 4 Argon · high</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i class="p"></i><i></i><i></i><i></i><i></i></span></td><td class="num">1 of 5</td></tr>
+          <tr><td>Gemini 4 Argon · medium</td><td><span class="steps"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="steps"><i class="p"></i><i></i><i></i><i></i><i></i></span></td><td class="num">1 of 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Each square is one sub-task in chain order; filled means passed. Chore 1, first release of the scene; the other nine chores are being run now.</p>
+  </div>
+</section>
+
+<section class="section" id="films">
+  <div class="container">
+    <h2>Three chains, filmed</h2>
+    <p class="section-lead">Top left in each film: the scripted robot completing all five sub-tasks in one continuous run. The other tiles show model runs and the sub-task where each one stopped; the last tile keeps score. Played at 45x.</p>
+    <div class="films">
+      <div class="card">
+        <h4>T10 · Night admission paperwork and bedside station</h4>
+        <figure>
+          <video src="t10_chain.mp4" poster="t10_poster.jpg" controls muted playsinline preload="metadata"></video>
+          <figcaption>Answer a ringing desk phone, scan the admission card, carry the chart box from the drawer to the desk, push the cart to the bedside and set the chart on the bedside table. Start state A.</figcaption>
+        </figure>
+      </div>
+      <div class="card">
+        <h4>T9 · Biohazard bagging and sharps</h4>
+        <figure>
+          <video src="t9_chain.mp4" poster="t9_poster.jpg" controls muted playsinline preload="metadata"></video>
+          <figcaption>A utility-room chain of five sub-tasks around waste bags and a sharps container. Start state A.</figcaption>
+        </figure>
+      </div>
+      <div class="card">
+        <h4>T7 · Sterile store restock by expiry</h4>
+        <figure>
+          <video src="t7_chain.mp4" poster="t7_poster.jpg" controls muted playsinline preload="metadata"></video>
+          <figcaption>A supply-store chain of five sub-tasks that restocks shelves in expiry order. Start state A.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <p class="note">Films come from the first scene releases; some model tiles were filmed before those models' runs had been made.</p>
+  </div>
+</section>
+
+<section class="section" id="credits" style="background:#fafafa">
+  <div class="container">
+    <h2>What credits would pay for</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Credit</th><th>What it runs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GPU (NVIDIA)</strong></td><td>Isaac Sim with cameras and moving people. One 96 GB RTX PRO 6000 Blackwell runs about 8 jobs at once; every model run, scripted check and chained walk needs one of those slots for 20 minutes to several hours.</td></tr>
+          <tr><td><strong>Claude API (Anthropic)</strong></td><td>Claude runs take the most calls: one Opus 5.5 sub-task costs about $0.10 to $10 in API use, and a chained walk strings five of them together.</td></tr>
+          <tr><td><strong>OpenAI API</strong></td><td>GPT Terra and Sol runs on every chore, both start states, three walks each.</td></tr>
+          <tr><td><strong>Gemini API (Google)</strong></td><td>Gemini Argon runs, so the comparison covers every major frontier family.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card content" style="margin-top:24px">
+      <h4>What your lab gets</h4>
+      <ul>
+        <li>Your models evaluated on all ten chores, both start states, with the same prompts, pictures and tools as every other model.</li>
+        <li>A per-run breakdown of where each chain breaks: which sub-task, and what the robot did there.</li>
+        <li>Results shared with your team before the public release.</li>
+        <li>Credit for your support in the release.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Credits and access</h3>
+        <p>To talk about GPU or API credits, write to the organizers' group address.</p>
+        <div class="contact-actions">
+          <a class="button" href="mailto:hospitalbench-cvpr27@googlegroups.com">hospitalbench-cvpr27@googlegroups.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>All data are simulated; no real person, patient record or hospital is recorded. Results on this page are from the benchmark's first scene releases and may change as the scenes are refined.</p>
+  <p>This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+</footer>
+
+</body>
+</html>
