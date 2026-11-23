@@ -82,7 +82,7 @@
 <section class="section" id="tasks">
   <div class="container">
     <h2>The Ten Tasks</h2>
-    <p class="section-lead">Ten tasks of five scored dependent sub-tasks each (four links per task, 40 in all) across eight hospital areas. Each follows one hospital role, mirrors one real risk, and lists named harm events (51 in all) that fail the task.</p>
+    <p class="section-lead">Ten tasks of five scored dependent sub-tasks each (four links per task, <span data-auto="links_total">40</span> in all) across eight hospital areas. Each follows one hospital role, mirrors one real risk, and lists named harm events (51 in all) that fail the task.</p>
     <div class="box">
       <div class="table-wrap">
       <table class="data-table stack">
@@ -110,12 +110,12 @@
       </div>
     </div>
     <div class="card">
-      <h4>Build status, 3 November 2026</h4>
+      <h4>Build status, <span data-auto="build_date">23 November 2026</span></h4>
       <div class="content">
         <ul>
-          <li>All ten rooms are built in Isaac Sim, with 2 public start states per task, and pass a physics settle check.</li>
-          <li>The scripted reference robot completes sub-tasks 1 to 5 as one chain on both start states for T1, T7, T9 and T10; on the other six tasks, early sub-tasks only.</li>
-          <li>One link of 40 is certified so far, T1.01&rarr;T1.02.</li>
+          <li>All ten rooms are built in Isaac Sim, with <span data-auto="n_starts">2</span> public start states per task, and pass a physics settle check.</li>
+          <li>The scripted reference robot completes sub-tasks 1 to 5 as one chain on both start states for <span data-auto="robot_chains">all 10 tasks (T1 to T10)</span>.</li>
+          <li>One link of <span data-auto="links_total">40</span> is certified so far, T1.01&rarr;T1.02.</li>
         </ul>
       </div>
     </div>
@@ -158,7 +158,7 @@
     <div class="split-card">
       <div class="split-icon">D</div>
       <div class="split-content"><strong>Development</strong>
-        <p>All ten tasks with start states, scenes, task cards, scorer, link certificates, the Track 1 baseline agent and the Track 2 demonstrations. 5 start states per task planned, 2 built.</p></div>
+        <p>All ten tasks with start states, scenes, task cards, scorer, link certificates, the Track 1 baseline agent and the Track 2 demonstrations. 5 start states per task planned, <span data-auto="n_starts">2</span> built.</p></div>
       <span class="badge badge-public">Public</span>
     </div>
     <div class="split-card">
@@ -195,7 +195,7 @@
     <div class="card">
       <h4>Ranking score</h4>
       <div class="content">
-        <p>The ranking score is the mean number of sub-tasks passed in order, divided by five, over the clean test episodes of all tasks. End-task success and the ranking score come from chained runs only. No baseline is above zero end-task success today (0 of 35 pilot runs), so at this floor the ranking score ties at or near 0. Scores that agree to two decimals are ranked by the number of episodes passing each sub-task, deepest position first, then the unrounded mean, then lower mean cost per run (Track 1 API dollars) or, for Track 2, fewer model calls per episode. The leaderboard also shows per-area and per-kind breakdowns.</p>
+        <p>The ranking score is the mean number of sub-tasks passed in order, divided by five, over the clean test episodes of all tasks. End-task success and the ranking score come from chained runs only. Measured so far on the development walks (one first walk per task and start state): <span data-auto="end_so_far">6 of 137</span> first walks, from <span data-auto="n_models">7</span> models, passed all five sub-tasks. The first-walk ranking score runs from <span data-auto="score_range">0.14 to 0.34 across the 7 models, so far</span>. Best end-task rate among first walks: <span data-auto="best_first">a Google Gemini model (medium), 2 of 19 walks (10.5%, 19 of 20 walks done, so far); next: an Anthropic Claude model (high), 2 of 20 walks (10.0%)</span>. Top-setting walks are kept apart from the ranking; their best end-task rate: <span data-auto="best_top">an Anthropic Claude model (max), 3 of 17 walks (17.6%, 17 of 20 walks done, so far); next: a Google Gemini model (high), 1 of 17 walks (5.9%, 17 of 20 walks done, so far)</span>. Their best ranking score: <span data-auto="score_top">an Anthropic Claude model (max) with 0.49 over 17 of 20 walks, so far</span>. These counts are interim and small. Scores that agree to two decimals are ranked by the number of episodes passing each sub-task, deepest position first, then the unrounded mean, then lower mean cost per run (Track 1 API dollars) or, for Track 2, fewer model calls per episode. The leaderboard also shows per-area and per-kind breakdowns.</p>
       </div>
     </div>
     <div class="card">
@@ -299,6 +299,7 @@
 </section>
 
 <footer class="footer">
+  <p>Results on this page are filled automatically from the organizers' leaderboard data, <span data-auto="stamp">updated Mon Nov 23 2026, 12:03 AM PST</span>.</p>
   <p>All data are simulated; no real person, patient record or hospital is recorded. Dates are tentative until the workshop is accepted.</p>
   <p>This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a
   <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
